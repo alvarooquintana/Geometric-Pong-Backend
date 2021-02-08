@@ -3,9 +3,8 @@ import random
 
 app = FastAPI()
 
-users = {}
-users_id = 0
-
+from game_manager import GameManager
+game_manager = GameManager()
 
 class SessionManager:
     
@@ -71,7 +70,10 @@ async def job_status_websocket(websocket: WebSocket):
             elif data.get("msg") == "all":
                 for session in session_manager.sessions:
                     await session.ws.send_json({"hola": "chicos"})
-        
+
+            elif data.get("msg") == "ready":
+                pass
+
         except Exception as e:
             print(e)
             await websocket.send_json({'msg': str(e)})
