@@ -65,8 +65,11 @@ class Game:
     def start(self):
         for player in self.room_players:
             if player == self.room_players[0]:
-                self.game_players.append(Player(x=0,y=0,w=10,h=2,lifes=3, speed=100, color=[232,232,33], dx=0, dy=0))
-            
+                self.game_players.append(Player(x=500,y=10,w=10,h=2,lifes=3, speed=100, color=[232,232,33], dx=0, dy=0))
+            elif  player == self.room_players[1]:
+                self.game_players.append(Player(x=500,y=500,w=10,h=2,lifes=3, speed=100, color=[232,232,33], dx=0, dy=0))
+            else:
+                raise Exception("Invalid player number")
 
 
     def tick(self):
