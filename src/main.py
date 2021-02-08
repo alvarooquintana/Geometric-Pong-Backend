@@ -31,8 +31,8 @@ class RoomsManager:
             else:
                 return player.append(room)
 
-    def delete_room(self, player):
-        self.rooms.remove(player)
+    def delete_room(self, players):
+        self.rooms.remove(players)
 
 
 class Room:
@@ -45,8 +45,9 @@ class Room:
     def start_game(self):
         pass
 
-    def leave_room(self):
+    def leave_room(self,player):
         pass
+        
 
 new_room = Room()
 room_manager = RoomsManager()
