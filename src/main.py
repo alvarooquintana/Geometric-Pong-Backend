@@ -1,6 +1,6 @@
 from fastapi import FastAPI, WebSocket
 import random
-
+from game_manager import Game
 app = FastAPI()
 
 
@@ -43,7 +43,10 @@ class Room:
         self.players.append(player)
 
     def start_game(self):
-        pass
+        self.game = Game(self.players)
+        self.game.run()
+        
+        
 
     def leave_room(self,player):
         pass
@@ -66,7 +69,6 @@ async def job_status_websocket(websocket: WebSocket):
     player_id = random.randint(1, 1000)
     # session_manager.add_session(Session)
 
-    print(session_manager.sessions)
 
     while True:
         try:
