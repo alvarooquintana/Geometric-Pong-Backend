@@ -38,7 +38,8 @@ class Game:
     def __init__(self, players):
         self.id = uuid.uuid4()
 
-        self.players = players
+        self.room_players = players
+        self.game_players = []
         self.balls = []
 
         self.x = 300
@@ -53,18 +54,29 @@ class Game:
     def run(self):
         self.clock = pygame.time.Clock()
         self.running = True
-        
+        self.start()
+
         while self.running:
             dt = self.clock.tick(60)
             self.handle_events(dt)
             self.update_positions(dt)
 
-
     
+    def start(self):
+        for player in self.room_players:
+            if player == self.room_players[0]:
+                self.game_players.append(Player(x=0,y=0,w=10,h=2,lifes=3, speed=100, color=[232,232,33], dx=0, dy=0))
+            
+
+
     def tick(self):
         pass
 
     def stop(self):
         pass
 
+    def handle_events(self,dt):
+        pass
 
+    def update_positions(self,dt):
+        pass
